@@ -2,14 +2,14 @@
 <!-- ARM layout_v2.html -->
 <html class="no-js" lang="en">
 <head>
-	
-	<title>
-		
-			Pedí tu Chip
-		
-	</title>
+    
+    <title>
+        
+            Pedí tu Chip
+        
+    </title>
     <link rel="shortcut icon" type="image/x-icon" href="https://d2px9hljt8lyuz.cloudfront.net/ar/static/img/favicon_tuenti.ico" />
-	<meta name="keywords" content="chip, sim, Chip prepago, Chip gratis" />
+    <meta name="keywords" content="chip, sim, Chip prepago, Chip gratis" />
     <meta name="language" content="es" />
     <meta name="robots" content="index, follow" />
     <meta property="og:url" content="https://www.tuenti.com.ar/solicita-chip-SIM-gratis/" >
@@ -28,7 +28,7 @@
     <meta name="google-site-verification" content="E2xi4_Y21PBs_Wg_epdeqqCHCpMJhByDeidv-ZN6xZs" />
 
     <meta name="viewport" content="width=device-width">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 
 
     <link rel="stylesheet" href="https://d2px9hljt8lyuz.cloudfront.net/ar/CACHE_4.13/css/8de50311b2f0.css" type="text/css" /><link rel="stylesheet" href="https://d2px9hljt8lyuz.cloudfront.net/ar/CACHE_4.13/css/874a3978eda9.css" type="text/css" media="screen" />
@@ -56,18 +56,18 @@
     <![endif]-->
 
 
-	
     
     
-
-	
-
-	
+    
 
     
 
+    
 
-	
+    
+
+
+    
     <!-- Include the css files actives-->
     
            <link rel="stylesheet" href="https://d2px9hljt8lyuz.cloudfront.net/ar/media/adminfiles/banner_home_tuenti_2_0.css" />
@@ -81,17 +81,89 @@
   <!-- end js -->
 
     <!-- Google Analytics -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
-		{ (i[r].q=i[r].q||[]).push(arguments)}
-		,i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', 'UA-44335354-1', 'tuenti.com.ar');
-		ga('send', 'pageview');
-	</script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+        { (i[r].q=i[r].q||[]).push(arguments)}
+        ,i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44335354-1', 'tuenti.com.ar');
+        ga('send', 'pageview');
+    </script>
+
+
+<!-- added by juansanzone -->
+
+     <style type="text/css">
+        #map_canvas {height:300px;width:400px}
+    </style>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+  
+        var initialLat  = "-34.6037232";
+        var initialLng  = "-58.3815931";
+        var initialZoom = 11;
+
+        var map;
+        var markersArray = [];
+
+        function loadMap()
+        {
+            var latlng = new google.maps.LatLng(initialLat, initialLng);
+            var myOptions = {
+                zoom: initialZoom,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+            // Click listener
+            google.maps.event.addListener(map, "click", function(event)
+            {
+                // Add mark
+                setMark(event.latLng);
+
+                // Refresh input with lat-lng
+                document.getElementById("latitude").value = event.latLng.lat();
+                document.getElementById("longitude").value = event.latLng.lng();
+            });
+        }
+
+        function setMark(location) 
+        {
+            // Remove all actual marks
+            deleteOverlays();
+
+            var marker = new google.maps.Marker({
+                position: location, 
+                map: map
+            });
+
+            // Add new mark (lat,lng)
+            markersArray.push(marker);
+
+            // map.setCenter(location);
+        }
+
+        // Deletes all markers in array
+        function deleteOverlays() 
+        {
+            if (markersArray) {
+                for (i in markersArray) {
+                    markersArray[i].setMap(null);
+                }
+            markersArray.length = 0;
+            }
+        }
+    </script>
+
+<!-- end - added by juansanzone -->
+
+
 </head>
-<body class=" layout_v2">
+<body class=" layout_v2" onLoad="loadMap();">
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?GTM-55LFDX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -201,29 +273,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </header>
     
     <div class="body-container  None"> <!-- esto tiene que venir desde python, la secciona o algo para saber qué clase poner-->
-    	<!-- la clase zinnia está a capón, hay que quitarla  -->
-    	<div id="wrapper">
+        <!-- la clase zinnia está a capón, hay que quitarla  -->
+        <div id="wrapper">
 
 
-    		<!--<div id="mainContainer">-->
+            <!--<div id="mainContainer">-->
 
-    			
+                
 
 
 <div id="main-head">
 
 
-	
+    
 
     
 
-	
+    
 
 </div>
 <div id="fb-root"></div>
 <div id="main-content" class="clearfix">
     
-	
+    
 
     <div class="row">
         <div class="g-12 column np">
@@ -236,7 +308,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 
-	
+    
 
     <div class="row content-wrapper clearfix">
         
@@ -264,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <input type='hidden' name='csrfmiddlewaretoken' value='62YHFBVf4Tiur4ZODsi8fzZqyFDk1Hag' />
         <input id="id_requested_url" type="hidden" name="requested_url" value="/solicita-chip-SIM-gratis/">
         <fieldset><legend class="indent">Datos personales</legend>
-		<div class="mgm_fg">
+        <div class="mgm_fg">
             <p>
                 <input class="isCharacter" id="id_name" maxlength="50" name="name" placeholder="Nombre" required="" type="text" />
                 <span class="errors empty-error">Escribí tu nombre</span>
@@ -306,7 +378,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-		</fieldset>
+        </fieldset>
 
 
          <div class="mgm_fg fh">
@@ -345,14 +417,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
 
 
-		<fieldset style="width:50%"><legend class="dn">Dirección</legend>
+        <fieldset style="width:50%"><legend class="dn">Marca tu direccion en el mapa</legend>
+    <p><strong>Marca tu direccion en el mapa</strong></p>
 
-		<p><strong>Dirección</strong></p>
-		
-		<div class="cb">
+    <div id="map_canvas"></div>
+    Lat: <input type="text" id="latitude">
+    Lng: <input type="text" id="longitude">
+    <br/>
+
+<!--
+
+
+    
+        
+        <div class="cb">
          
-			<label class="styled-select">
-				<select id="id_region" name="region" placeholder="Provincia" required="">
+            <label class="styled-select">
+                <select id="id_region" name="region" placeholder="Provincia" required="">
 <option value="PROVINCIA ...">Provincia ...</option>
 <option value="BUENOS AIRES">Buenos Aires</option>
 <option value="CATAMARCA">Catamarca</option>
@@ -379,53 +460,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <option value="TIERRA DEL FUEGO">Tierra del Fuego</option>
 <option value="TUCUMÁN">Tucumán</option>
 </select>
-			</label>
-			<span class="errors empty-error"> Debes seleccionar una provincia</span>
+            </label>
+            <span class="errors empty-error"> Debes seleccionar una provincia</span>
             
-		
+        
         </div>
         <div class="cb">
-		<p>
-			<input class="isCharacter" id="id_city" maxlength="50" name="city" placeholder="Ciudad" required="" type="text" />
-			<span class="errors empty-error">Por favor, ingresá tu Ciudad</span>
-			<span class="errors format-error">Por favor, ingresá una ciudad válida</span>
-		</p>
+        <p>
+            <input class="isCharacter" id="id_city" maxlength="50" name="city" placeholder="Ciudad" required="" type="text" />
+            <span class="errors empty-error">Por favor, ingresá tu Ciudad</span>
+            <span class="errors format-error">Por favor, ingresá una ciudad válida</span>
+        </p>
         </div>
-		<p>
-			<input class="isCharacter" id="id_street" maxlength="250" name="street" placeholder="Calle" required="" type="text" />
-			<span class="errors empty-error">Por favor, ingresá tu Calle</span>
+        <p>
+            <input class="isCharacter" id="id_street" maxlength="250" name="street" placeholder="Calle" required="" type="text" />
+            <span class="errors empty-error">Por favor, ingresá tu Calle</span>
             <span class="errors format-error">Por favor, ingresá una calle válida</span>
-		</p>
-	           
+        </p>
+             -->
+
         <!-- <div class="divShort" style="width:316px;display:inline-block; margin-bottom: 10px;"> -->
+
+        <!--
         <div class="divShort" style=" margin-bottom: 10px;">
-        	<div style="width:35%;display:inline-block;">
-				<input class="isNumber short" id="id_number" maxlength="50" name="number" placeholder="Número" required="" type="text" />
-   				 <span class="errors empty-error">Ingresá tu número</span>
-   				 <span class="errors format-error">Ingresá un número válido</span>
-			</div>
+            <div style="width:35%;display:inline-block;">
+                <input class="isNumber short" id="id_number" maxlength="50" name="number" placeholder="Número" required="" type="text" />
+                 <span class="errors empty-error">Ingresá tu número</span>
+                 <span class="errors format-error">Ingresá un número válido</span>
+            </div>
 
-			<div style="width:25%; margin: 0 10px;display:inline-block;">
-				<input class="short" id="id_floor" maxlength="50" name="floor" placeholder="Piso" type="text" />
-			</div>
+            <div style="width:25%; margin: 0 10px;display:inline-block;">
+                <input class="short" id="id_floor" maxlength="50" name="floor" placeholder="Piso" type="text" />
+            </div>
 
-			<div style="width:25%;display:inline-block;">
-				<input class="short" id="id_department" maxlength="50" name="department" placeholder="Dpto" type="text" />
-			</div>
-		</div>            
-		
-		<p>
-			<input id="id_postcode" maxlength="8" name="postcode" placeholder="Código postal" required="" type="postCode" />
-			<span class="errors empty-error">Por favor, ingresá tu Código postal</span>
-			<span class="errors format-error">Por favor, ingresá un codigo postal válido</span>
-            
-		</p>
+            <div style="width:25%;display:inline-block;">
+                <input class="short" id="id_department" maxlength="50" name="department" placeholder="Dpto" type="text" />
+            </div>
+        </div>            
         
-		</fieldset>
+        <p>
+            <input id="id_postcode" maxlength="8" name="postcode" placeholder="Código postal" required="" type="postCode" />
+            <span class="errors empty-error">Por favor, ingresá tu Código postal</span>
+            <span class="errors format-error">Por favor, ingresá un codigo postal válido</span>
+            
+        </p>
+    
+    -->    
+        </fieldset>
 
-		<!-- <div class="button pink">
-			<button type="submit">Enviar</button>
-		</div> -->
+
+        <!-- <div class="button pink">
+            <button type="submit">Enviar</button>
+        </div> -->
         <div class="panelActions clearfix">
             <button type="submit" class="bt bg_color_violet">Enviar</button>
         </div>
@@ -489,8 +575,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-    		<!--</div>-->
-    	</div>
+            <!--</div>-->
+        </div>
     </div>
 
     
@@ -564,7 +650,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
     <input type="hidden" value="/add_subscription_ajax" id="add_subscription_ajax">
-	<script src="https://d2px9hljt8lyuz.cloudfront.net/ar/static/js/jquery.django.messages.js" ></script>
+    <script src="https://d2px9hljt8lyuz.cloudfront.net/ar/static/js/jquery.django.messages.js" ></script>
     <script src="https://d2px9hljt8lyuz.cloudfront.net/ar/static/js/vendor/jquery.placeholder.js"></script>
 
     
@@ -659,34 +745,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
     });
 
-	//Javascript para elección de la cuenta en el menú reponsive...
-	$('#miCuenta').on('click', function(){
-		if($('#miCuenta').hasClass('clickon')){
-			$('#lineasDisponibles').hide(100);
-			$('#miCuenta').removeClass('clickon');
-		}else {
-			$('#lineasDisponibles').show(100);
-			$('#miCuenta').addClass('clickon');
-		}
+    //Javascript para elección de la cuenta en el menú reponsive...
+    $('#miCuenta').on('click', function(){
+        if($('#miCuenta').hasClass('clickon')){
+            $('#lineasDisponibles').hide(100);
+            $('#miCuenta').removeClass('clickon');
+        }else {
+            $('#lineasDisponibles').show(100);
+            $('#miCuenta').addClass('clickon');
+        }
 
-	});
+    });
 
-	$('#lineasDisponibles').find('li').on('click',function(){
-		linea=$(this).attr('id');
-		$.ajax({
+    $('#lineasDisponibles').find('li').on('click',function(){
+        linea=$(this).attr('id');
+        $.ajax({
             data: { 'selected_account' : $(this).attr('id') },
             type: 'GET',
             url: "/select-account/"
         });
         $('#numCuenta').html($(this).attr('id'));
-		$('#lineasDisponibles').hide(100);
-		$('#miCuenta').removeClass('clickon');
+        $('#lineasDisponibles').hide(100);
+        $('#miCuenta').removeClass('clickon');
 
-	});
+    });
 
 
 
-  	</script>
+    </script>
 
 
 <div id="overlay-container"><p class="overlay-message">Conectando con MercadoPago...</p></div>
